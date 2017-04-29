@@ -5,10 +5,19 @@ var chalk = require('chalk');
 	fs.readFile('staedte.json', function(err, data){
 		var staedte = JSON.parse(data);
 		
-		// Fuer Aufgabe 3 - .sort
+		
+		// Fuer Aufgabe 3 - .sort 
+		//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort?v=example
 		staedte.cities.sort(function(a, b){
 			return a.population - b.population;			
 		}); 
+		
+		//http://www.daveeddy.com/2013/03/26/synchronous-file-io-in-nodejs/
+		fs.writeFileSync( 'staedte_sortiert.json', JSON.stringify(staedte, null, 4));
+			console.log("--------------------------------");
+			console.log("staedte_sortiert.json erfolgreich erstellt");
+			console.log("--------------------------------");
+
 		
 		// 	ForSchleife zum ausgeben der bereits gelesenen daten
 		//	Fuer Aufgabe2 - Chalk Module hinzugefuegt
