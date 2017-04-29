@@ -4,7 +4,12 @@ var chalk = require('chalk');
 	// 	Read the File staedte.json , convert text to js obj
 	fs.readFile('staedte.json', function(err, data){
 		var staedte = JSON.parse(data);
-	
+		
+		// Fuer Aufgabe 3 - .sort
+		staedte.cities.sort(function(a, b){
+			return a.population - b.population;			
+		}); 
+		
 		// 	ForSchleife zum ausgeben der bereits gelesenen daten
 		//	Fuer Aufgabe2 - Chalk Module hinzugefuegt
 		for(var i=0; i<staedte.cities.length; i++){
@@ -17,3 +22,4 @@ var chalk = require('chalk');
 			}
 		}
 	});
+	
