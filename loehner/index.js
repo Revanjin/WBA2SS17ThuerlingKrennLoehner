@@ -16,6 +16,14 @@ var chalk = require('chalk');
 		//	Damit nach jeder Ausgabe der Daten auch abgetrennt wird	
 			if(i < staedte.cities.length - 1){
 				console.log("--------------------");
+
+            //Aufgabe Drei Sortieren nach population.
+                staedte.cities.sort(function(a, b){
+			         return a.population - b.population;			
+		});
+
+                fs.writeFileSync( 'staedte_sorted.json', JSON.stringify(staedte, null, 4));
+                //Datei wird ausgeführt in erstellt bevor weitere functionen benutzt werden
           }
     }
 });
