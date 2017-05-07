@@ -1,0 +1,19 @@
+{
+  "name": "wbakickoffkrenn",
+  "version": "0.0.1",
+  "description": "Erste Aufgabe Krenn WBA2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Revanjin/WBA2SS17ThuerlingKrennLoehner.git"
+  },
+  "author": "Christian Krenn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Revanjin/WBA2SS17ThuerlingKrennLoehner/issues"
+  },
+  "homepage": "https://github.com/Revanjin/WBA2SS17ThuerlingKrennLoehner#readme"
+}
