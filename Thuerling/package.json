@@ -1,0 +1,16 @@
+{
+  "name": "thuerlin",
+  "version": "1.0.0",
+  "description": "package",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Yahiko@Solaire",
+    "MINGW64",
+    "~"
+  ],
+  "author": " <file> (use \"git reset HEAD <file>...\" to unstage)",
+  "license": "ISC"
+}
