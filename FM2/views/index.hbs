@@ -1,66 +1,66 @@
-<h1>MONGODB - EXERCISE</h1>
+<h1>Find Mates For Matches FM²</h1>
 <section class="insert">
-    <h3>Insert Data</h3>
+    <h3>Post einfügen</h3>
     <form action="/insert" method="post">
         <div class="input">
-            <label for="title">Title</label>
+            <label for="title">Spiel</label>
             <input type="text" id="title" name="title">
         </div>
         <div class="input">
-            <label for="content">Content</label>
+            <label for="content">Rang</label>
             <input type="text" id="content" name="content">
         </div>
         <div class="input">
-            <label for="author">Author</label>
+            <label for="author">Username</label>
             <input type="text" id="author" name="author">
         </div>
-        <button type="submit">INSERT</button>
+        <button type="submit">Daten Einfügen</button>
     </form>
 </section>
 <section class="get">
-    <h3>Get Data</h3>
-    <a href="/get-data">LOAD DATA</a>
+    <h3>Post laden</h3>
+    <a href="/get-data">-> Daten Laden <-</a>
     <div>
         {{# each items }}
             <article class="item">
-                <div>Title: {{ this.title }}</div>
-                <div>Content: {{ this.content }}</div>
-                <div>Author: {{ this.author }}</div>
+                <div>Spiel: {{ this.title }}</div>
+                <div>Rang: {{ this.content }}</div>
+                <div>Username: {{ this.author }}</div>
                 <div>ID: {{ this._id }}</div>
             </article>
         {{/each}}
     </div>
 </section>
 <section class="update">
-    <h3>Update Data</h3>
+    <h3>Post aktualisieren</h3>
     <form action="/update" method="post">
         <div class="input">
             <label for="id">ID</label>
             <input type="text" id="id" name="id">
         </div>
         <div class="input">
-            <label for="title">Title</label>
+            <label for="title">Spiel</label>
             <input type="text" id="title" name="title">
         </div>
         <div class="input">
-            <label for="content">Content</label>
+            <label for="content">Rang</label>
             <input type="text" id="content" name="content">
         </div>
         <div class="input">
-            <label for="author">Author</label>
+            <label for="author">Username</label>
             <input type="text" id="author" name="author">
         </div>
-        <button type="submit">UPDATE</button>
+        <button type="submit">Daten aktualisieren</button>
     </form>
 </section>
 </section>
 <section class="delete">
-    <h3>Delete Data</h3>
+    <h3>Post löschen</h3>
     <form action="/delete" method="post">
         <div class="input">
             <label for="id">ID</label>
             <input type="text" id="id" name="id">
         </div>
-        <button type="submit">DELETE</button>
+        <button type="submit">Daten löschen</button>
     </form>
 </section>
