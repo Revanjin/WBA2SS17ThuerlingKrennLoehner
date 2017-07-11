@@ -3,6 +3,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 mongoose.connect('localhost:27017/test');
 var Schema = mongoose.Schema;
+var models = require('./index')
 
 var userDataSchema = new mongoose.Schema({
   title: {type: String, required: true},
@@ -11,14 +12,15 @@ var userDataSchema = new mongoose.Schema({
 }, {collection: 'user-data'});
 
 var UserData = mongoose.model('UserData', userDataSchema);
-
+//var User = mongoose.model('myuser', UserSchema);
 /* GET home page. */
 router.get('/', function(req, res, next) {
   if(!req.session.user){
     return res.status(401).send();
   }
-  //return res.status(200).send("Welcome");
+
   return res.render('dashboard');
+  res.status(200).send("Welcome");
 });
 
 router.get('/get-data', function(req, res, next) {
@@ -32,7 +34,7 @@ router.post('/insert', function(req, res, next) {
   var item = {
     title: req.body.title,
     content: req.body.content,
-    author: req.body.author
+    author: models.username
   };
 
   var data = new UserData(item);

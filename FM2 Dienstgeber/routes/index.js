@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 mongoose.connect('localhost:27017/test');
 var Schema = mongoose.Schema;
 
+
 var UserSchema = new mongoose.Schema({
     username: {type: String, unique: true},
     password: {type: String},
@@ -31,12 +32,15 @@ router.post('/login', function(req, res){
     if(!user){
       return res.status(404).send();
     }
-    req.session.user = user;
-    //return res.status(200).send();
-    res.redirect('/dashboard');
-  })
+      req.session.user = user;
+      res.status(200).send();
+      res.redirect('/dashboard');
 
-})
+
+  })
+  module.exports = username;
+
+});
 /*router.get('/dashboard'), function(req, res){
   if(!req.session.user){
     return res.status(401).send();
@@ -72,7 +76,7 @@ router.post('/register', function(req, res, next) {
       console.log(err);
       return res.status(500).send();
     }
-      return res.status(200).send();
+      res.status(200).send();
       res.send('User angelegt');
   })
   res.redirect('/');

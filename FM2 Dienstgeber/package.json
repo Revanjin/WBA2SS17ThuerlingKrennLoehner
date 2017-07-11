@@ -1,6 +1,6 @@
 {
-  "name": "09-mongodb",
-  "version": "0.0.0",
+  "name": "FM²",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
@@ -14,6 +14,7 @@
     "express-session": "^1.15.3",
     "mongoose": "^4.11.1",
     "morgan": "~1.8.1",
+    "passport": "^0.3.2",
     "serve-favicon": "~2.4.2"
   }
 }
