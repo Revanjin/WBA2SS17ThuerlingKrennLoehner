@@ -39,7 +39,7 @@ router.get('/', function(req, res, next) {
   }
 });
 
-// -------------- POST /LOGIN --------------
+// -------------- POST /users --------------
 router.post('/login', function(req, res)
 {
 // username und password definieren
@@ -57,7 +57,7 @@ var password = req.body.password;
       }
       // UserSession + response
       req.session.user = user;
-      res.send('Willkommen bei FM2 '+ req.body.username +'. du wurdest erfolgreich eingeloggt!');
+      res.status(201).res.send('Willkommen bei FM2 '+ req.body.username +'. du wurdest erfolgreich eingeloggt!');
       console.log('Willkommen bei FM2. Du wurdest erfolgreich eingeloggt!');
     })
   }
@@ -144,6 +144,7 @@ router.post('/register', function(req, res, next) {
         return res.status(500).send();
       }
       // response Infotext
+      res.json(201, newuser)
       res.send('Willkommen bei FM2. Der Benutzer mit dem Namen '+ newuser.username +'. wurde erfolgreich angelegt!');
       console.log('Willkommen bei FM2. Der Benutzer wurde erfolgreich angelegt!');
     })
