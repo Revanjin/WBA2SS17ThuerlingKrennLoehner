@@ -1,8 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
+//mongoose.Promise = require('bluebird');
 mongoose.connect('localhost:27017/test');
 var Schema = mongoose.Schema;
+mongoose.Promise = require('bluebird');
 
 var userDataSchema = new mongoose.Schema({
   title: {type: String, required: true},
@@ -14,21 +16,42 @@ var UserData = mongoose.model('UserData', userDataSchema);
 //var User = mongoose.model('myuser', UserSchema);
 /* GET home page. */
 router.get('/', function(req, res, next) {
+
   if(!req.session.user){
     return res.status(401).send();
   }
-  res.render('dashboard');
+  if (req.header('Content-Type') == 'application/json')
+  {
+
+  }
+  /*
+  else {
+    res.render('dashboard');
+  }
+  */
+
 
 });
 
-router.get('/get-data', function(req, res, next) {
-  UserData.find()
+router.get('/posts', function(req, res, next) {
+  UserData.find().lean()
       .then(function(doc) {
-        res.render('dashboard', {items: doc});
+        if (req.header('Content-Type') == 'application/json')
+        {
+          res.json(doc);
+          console.log('Daten werden angezeigt!');
+          res.end();
+        }
+        /*
+        else {
+          res.render('dashboard', {items: doc});
+        }
+        */
+
       });
 });
 
-router.post('/insert', function(req, res, next) {
+router.post('/posts', function(req, res, next) {
   var item = {
     title: req.body.title,
     content: req.body.content,
@@ -37,11 +60,20 @@ router.post('/insert', function(req, res, next) {
 
   var data = new UserData(item);
   data.save();
+  if (req.header('Content-Type') == 'application/json')
+  {
+    res.json(data);
+    console.log('Post wurde mit '+ req.body.title +'hinzugefügt')
+  }
+  /*
+  else {
+    res.redirect('/dashboard');
+  }
+  */
 
-  res.redirect('/dashboard');
 });
 
-router.post('/update', function(req, res, next) {
+router.put('/posts', function(req, res, next) {
   var id = req.body.id;
 
   UserData.findById(id, function(err, doc) {
@@ -53,12 +85,27 @@ router.post('/update', function(req, res, next) {
     doc.author = req.body.author;
     doc.save();
   })
-  res.redirect('/dashboard');
+  if (req.header('Content-Type') == 'application/json')
+  {
+    res.json(doc);
+    console.log('Daten wurden verändert!');
+  }
+  /*
+  else {
+    res.redirect('/dashboard');
+  }
+  */
 });
 
-router.post('/delete', function(req, res, next) {
+router.delete('/posts', function(req, res, next) {
   var id = req.body.id;
   UserData.findByIdAndRemove(id).exec();
-  res.redirect('/dashboard');
+  if (req.header('Content-Type') == 'application/json')
+  {
+  }
+  else {
+    res.redirect('/dashboard');
+  }
+
 });
 module.exports = router;

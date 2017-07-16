@@ -16,7 +16,7 @@ var UserSchema = new mongoose.Schema({
 var User = mongoose.model('myuser', UserSchema);
 
 
-// -------------- GET / --------------
+// -------------- | INFOTEXT | GET / --------------
 router.get('/', function(req, res, next) {
   // JSON response
   if (req.header('Content-Type') == 'application/json')
@@ -31,16 +31,18 @@ router.get('/', function(req, res, next) {
     console.log('Willkommen bei Find Mates for Matches [ FM2 ]\n');
     res.end();
   }
+  /*
   else
   {
   // HTML response
   // render login.hbs
   res.render('login');
   }
+  */
 });
 
-// -------------- POST /users --------------
-router.post('/login', function(req, res)
+// -------------- | ANMELDEN | POST  --------------
+router.post('/session', function userAnmelden(req, res)
 {
 // username und password definieren
 var username = req.body.username;
@@ -57,11 +59,12 @@ var password = req.body.password;
       }
       // UserSession + response
       req.session.user = user;
-      res.status(201).res.send('Willkommen bei FM2 '+ req.body.username +'. du wurdest erfolgreich eingeloggt!');
+      res.status(201).type('text').send('Der User mit der ID ' + req.body.username + ' wurde erfolgreich eingeloggt');
       console.log('Willkommen bei FM2. Du wurdest erfolgreich eingeloggt!');
     })
   }
   // HTML response
+  /*
   else
   {
     User.findOne({username: username, password: password}, function(err, user)
@@ -76,11 +79,11 @@ var password = req.body.password;
         res.status(200).send();
         res.redirect('/dashboard');
     })
-  }
+  }*/
 });
 
-// -------------- GET /LOGOUT --------------
-router.get('/logout', function(req, res){
+// -------------- | USER ABMELDEN | GET /LOGOUT --------------
+router.delete('/session', function userAbmelden(req, res){
   // JSON response
   if (req.header('Content-Type') == 'application/json')
   {
@@ -97,6 +100,7 @@ router.get('/logout', function(req, res){
     console.log('Bis zum nächsten mal. Du wurdest erfolgreich ausgeloggt!');
     }
   }
+  /*
   // HTML response
   // Session terminieren und redirect auf Loginpage
   else
@@ -104,10 +108,12 @@ router.get('/logout', function(req, res){
     req.session.destroy();
     return res.redirect('/');
   }
+  */
 });
 
-// -------------- GET /REGISTER --------------
-router.get('/register', function(req, res, next) {
+
+// -------------- USER_ANMELDEN - INFOTEXT| GET |  /REGISTER --------------
+router.get('/session', function userAnmeldenInfotext(req, res, next) {
   // JSON response
   if (req.header('Content-Type') == 'application/json')
   {
@@ -123,7 +129,7 @@ router.get('/register', function(req, res, next) {
 });
 
 // -------------- POST /REGISTER --------------
-router.post('/register', function(req, res, next) {
+router.post('/users', function(req, res, next) {
 
   // username und password definieren
   var username = req.body.username;
@@ -144,12 +150,13 @@ router.post('/register', function(req, res, next) {
         return res.status(500).send();
       }
       // response Infotext
-      res.json(201, newuser)
-      res.send('Willkommen bei FM2. Der Benutzer mit dem Namen '+ newuser.username +'. wurde erfolgreich angelegt!');
+      res.status(200).res.json(newuser);
+      //res.send('Willkommen bei FM2. Der Benutzer mit dem Namen '+ newuser.username +'. wurde erfolgreich angelegt!');
       console.log('Willkommen bei FM2. Der Benutzer wurde erfolgreich angelegt!');
     })
   }
   // HTML response
+  /*
   else
   {
     // mongoose funktion save
@@ -163,6 +170,8 @@ router.post('/register', function(req, res, next) {
     })
 
   }
+  */
 });
 // exportiere router
 module.exports = router;
+//module.exports
