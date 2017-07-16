@@ -17,33 +17,59 @@ router.get('/register', function(req, res, next) {
 router.post('/login',bodyParser.json(), function(req, res, next)  {
   var url = dUrl + '/session';
 
-  var userData = {
-
-
-  "username" : req.body.username,
-  "password" : req.body.password
-};
-
-  //var newuser = new User();
-
-  //newuser.username = username;
-  //newuser.password = password;
-
-  var options = {
+  var userData =
+  {
+    "username" : req.body.username,
+    "password" : req.body.password
+  }
+  var options =
+  {
     uri: url,
     method: 'POST',
-    headers: {
+    headers:
+    {
       'Content-Type': 'application/json'
     }
-}
-    if (req.header('Content-Type') == 'application/json')
-      {
+  }
+  if (req.header('Content-Type') == 'application/json')
+    {
       request(options, function(err, response){
         res.json(userData);
       });
     }
-    else {
+    else
+    {
       res.redirect('dashboard');
+    }
+
+});
+
+router.post('/register',bodyParser.json(),function(req, res, next){
+  var url = dUrl + '/session';
+
+  var userData =
+  {
+    "username" : req.body.username,
+    "password" : req.body.password
+  }
+  var options =
+  {
+    uri: url,
+    method: 'POST',
+    headers:
+    {
+      'Content-Type': 'application/json'
+    }
+  }
+  if (req.header('Content-Type') == 'application/json')
+    {
+      request(options, function(err, response){
+        res.json(userData);
+      });
+    }
+    else
+    {
+      res.redirect('login');
     }
 
 });
