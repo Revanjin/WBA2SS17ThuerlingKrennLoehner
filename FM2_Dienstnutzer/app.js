@@ -14,8 +14,6 @@ var users = require('./routes/users');
 
 var app = express();
 
-var model = require('model');
-
 var dHost = 'http://localhost';
 var dPort = 8000;
 var dUrl = dHost + ':' + dPort;

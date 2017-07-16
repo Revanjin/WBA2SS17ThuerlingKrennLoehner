@@ -47,6 +47,12 @@ router.post('/session', function userAnmelden(req, res)
 // username und password definieren
 var username = req.body.username;
 var password = req.body.password;
+
+var item = {
+              username: req.body.username,
+              password: req.body.password
+};
+var data = new User(item);
   // JSON response
   if (req.header('Content-Type') == 'application/json') {
     // Mongoose funktion findOne
@@ -59,7 +65,7 @@ var password = req.body.password;
       }
       // UserSession + response
       req.session.user = user;
-      res.status(201).type('text').send('Der User mit der ID ' + req.body.username + ' wurde erfolgreich eingeloggt');
+      res.json(data);//type('text').send('Der User mit der ID ' + req.body.username + ' wurde erfolgreich eingeloggt');
       console.log('Willkommen bei FM2. Du wurdest erfolgreich eingeloggt!');
     })
   }

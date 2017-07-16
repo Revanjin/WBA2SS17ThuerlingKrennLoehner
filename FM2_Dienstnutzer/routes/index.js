@@ -1,33 +1,50 @@
 var express = require('express');
 var router = express.Router();
-
+var request = require('request');
 var dHost = 'http://localhost';
 var dPort = 8000;
 var dUrl = dHost + ':' + dPort;
-
+var bodyParser = require('body-parser');
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/login', function(req, res, next) {
+  res.render('login', { title: 'Login FM2' });
+});
+router.get('/register', function(req, res, next) {
+  res.render('register', { title: 'Register FM2' });
 });
 
-router.post('/users', function(req, res, next)  {
-  var url = dUrl + '/users';
-  var username = req.body.username;
-  var password = req.body.password;
 
-  var newuser = new User();
+router.post('/login',bodyParser.json(), function(req, res, next)  {
+  var url = dUrl + '/session';
 
-  newuser.username = username;
-  newuser.password = password;
+  var userData = {
+
+
+  "username" : req.body.username,
+  "password" : req.body.password
+};
+
+  //var newuser = new User();
+
+  //newuser.username = username;
+  //newuser.password = password;
 
   var options = {
     uri: url,
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
-    }}
-    request(options, function(err, res, body){
-      res.json(body);
-    });
+    }
+}
+    if (req.header('Content-Type') == 'application/json')
+      {
+      request(options, function(err, response){
+        res.json(userData);
+      });
+    }
+    else {
+      res.redirect('dashboard');
+    }
+
 });
 module.exports = router;

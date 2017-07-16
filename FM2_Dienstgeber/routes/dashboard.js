@@ -102,6 +102,7 @@ router.delete('/posts', function(req, res, next) {
   UserData.findByIdAndRemove(id).exec();
   if (req.header('Content-Type') == 'application/json')
   {
+    console.log('Der Post wurde gelöscht');
   }
   else {
     res.redirect('/dashboard');
