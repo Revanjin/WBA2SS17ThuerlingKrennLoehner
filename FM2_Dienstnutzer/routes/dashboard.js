@@ -59,7 +59,7 @@ router.get('/get-data', function(req, res, next)  {
 router.post('/insert', function(req, res, next)  {
   var url = dUrl + '/users/posts';
   var doc = {
-    "_id"     : req.body.id,
+    "id"     : req.body.id,
     "title"   : req.body.title,
     "content" : req.body.content,
     "author"  : req.body.author
@@ -109,11 +109,10 @@ router.post('/insert', function(req, res, next)  {
        }
 
 });
-
 router.post('/update', function(req, res, next)  {
   var url = dUrl + '/users/posts';
-  var doc = {
-    "_id"     : req.body.id,
+  var data = {
+    "id"     : req.body.id,
     "title"   : req.body.title,
     "content" : req.body.content,
     "author"  : req.body.author
@@ -124,22 +123,77 @@ router.post('/update', function(req, res, next)  {
    headers: {
      'Content-Type': 'application/json'
    },
-   json: doc
+   json: data
  }
-  request(options, function (err, response, data){
+/*
+  var options =
+  {
+    uri: url,
+    method: 'POST',
+    headers:
+    {
+      'Content-Type': 'application/json'
+    }
+  }
+  var doc = {
+    "_id"     : req.body.id,
+    "title"   : req.body.title,
+    "content" : req.body.content,
+    "author"  : req.body.author
+  }
+  var title = req.body.title;
+  var content = req.body.content;
+  var author  = req.body.author;*/
+    //doc = JSON.parse(doc);
+    //console.log(data);
      if (req.header('Content-Type') == 'application/json')
        {
-         res.json(data);
-         console.log('Post wurde geändert');
+
+       	request(options, function(err, response, doc){
+       		res.json(doc);
+       	});
        }
        else
-        {
-          request(options, function (err, response, data)
-          {
-            res.redirect('/dashboard');
-          });
-        }
-  });
+       {
+         request(options, function(err, response, doc){
+        		res.redirect('/dashboard');
+        	});
+         //res.redirect('/dashboard');
+       }
 
 });
+
+router.post('/delete', function(req, res, next)  {
+  var url = dUrl + '/users/posts';
+  var doc = {
+    "id"     : req.body.id,
+    "title"   : req.body.title,
+    "content" : req.body.content,
+    "author"  : req.body.author
+ }
+ var options = {
+   uri : url,
+   method: 'DELETE',
+   headers: {
+     'Content-Type': 'application/json'
+   },
+   json: doc
+ }
+ if (req.header('Content-Type') == 'application/json')
+   {
+
+    request(options, function(err, response, data){
+      res.json(data);
+    });
+   }
+   else
+   {
+     request(options, function(err, response, data){
+        res.redirect('/dashboard');
+      });
+   }
+
+
+});
+
 module.exports = router;
