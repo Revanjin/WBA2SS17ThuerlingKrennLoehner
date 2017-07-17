@@ -2,9 +2,9 @@ var bodyParser = require('body-parser');
 var express = require('express');
 var router = express.Router();
 var request = require('request');
-var dUrl = 'https://fm2.herokuapp.com';
-//var dPort = 8000;
-//var dUrl = dHost + ':' + dPort;
+var dHost = 'http://localhost';
+var dPort = 8000;
+var dUrl = dHost + ':' + dPort;
 
 
 /* GET users listing. */
