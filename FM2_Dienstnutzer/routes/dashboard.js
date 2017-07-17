@@ -14,9 +14,6 @@ router.get('/', function(req, res, next) {
 
 router.get('/get-data', function(req, res, next)  {
   var url = dUrl + '/users/posts';
-
-
-
   var item = {
     title: req.body.title,
     content: req.body.content,
@@ -36,8 +33,6 @@ router.get('/get-data', function(req, res, next)  {
     doc = JSON.parse(doc);
     var userPosts =
      {
-       //"username" : req.body.username,
-       //"password" : req.body.password
        "_id"     : req.body.id,
        "title"   : req.body.title,
        "content" : req.body.content,
@@ -53,9 +48,7 @@ router.get('/get-data', function(req, res, next)  {
          res.render('dashboard', {items: doc});
        }
   });
-
 });
-
 router.post('/insert', function(req, res, next)  {
   var url = dUrl + '/users/posts';
   var doc = {
@@ -72,30 +65,8 @@ router.post('/insert', function(req, res, next)  {
    },
    json: doc
  }
-/*
-  var options =
-  {
-    uri: url,
-    method: 'POST',
-    headers:
-    {
-      'Content-Type': 'application/json'
-    }
-  }
-  var doc = {
-    "_id"     : req.body.id,
-    "title"   : req.body.title,
-    "content" : req.body.content,
-    "author"  : req.body.author
-  }
-  var title = req.body.title;
-  var content = req.body.content;
-  var author  = req.body.author;*/
-    //doc = JSON.parse(doc);
-    //console.log(data);
      if (req.header('Content-Type') == 'application/json')
        {
-
        	request(options, function(err, response, data){
        		res.json(data);
        	});
@@ -107,7 +78,6 @@ router.post('/insert', function(req, res, next)  {
         	});
          //res.redirect('/dashboard');
        }
-
 });
 router.post('/update', function(req, res, next)  {
   var url = dUrl + '/users/posts';
@@ -125,27 +95,6 @@ router.post('/update', function(req, res, next)  {
    },
    json: data
  }
-/*
-  var options =
-  {
-    uri: url,
-    method: 'POST',
-    headers:
-    {
-      'Content-Type': 'application/json'
-    }
-  }
-  var doc = {
-    "_id"     : req.body.id,
-    "title"   : req.body.title,
-    "content" : req.body.content,
-    "author"  : req.body.author
-  }
-  var title = req.body.title;
-  var content = req.body.content;
-  var author  = req.body.author;*/
-    //doc = JSON.parse(doc);
-    //console.log(data);
      if (req.header('Content-Type') == 'application/json')
        {
 
@@ -160,9 +109,7 @@ router.post('/update', function(req, res, next)  {
         	});
          //res.redirect('/dashboard');
        }
-
 });
-
 router.post('/delete', function(req, res, next)  {
   var url = dUrl + '/users/posts';
   var doc = {
@@ -181,7 +128,6 @@ router.post('/delete', function(req, res, next)  {
  }
  if (req.header('Content-Type') == 'application/json')
    {
-
     request(options, function(err, response, data){
       res.json(data);
     });
@@ -192,8 +138,6 @@ router.post('/delete', function(req, res, next)  {
         res.redirect('/dashboard');
       });
    }
-
-
 });
 
 module.exports = router;

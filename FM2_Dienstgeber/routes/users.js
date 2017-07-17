@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-//mongoose.Promise = require('bluebird');
 mongoose.connect('localhost:27017/test');
 var Schema = mongoose.Schema;
 mongoose.Promise = require('bluebird');
@@ -13,7 +12,6 @@ var userDataSchema = new mongoose.Schema({
 }, {collection: 'user-data'});
 
 var UserData = mongoose.model('UserData', userDataSchema);
-//var User = mongoose.model('myuser', UserSchema);
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
@@ -24,13 +22,6 @@ router.get('/', function(req, res, next) {
   {
 
   }
-  /*
-  else {
-    res.render('dashboard');
-  }
-  */
-
-
 });
 
 router.get('/posts', function(req, res, next) {
@@ -42,12 +33,6 @@ router.get('/posts', function(req, res, next) {
           console.log('Daten werden angezeigt!');
           res.end();
         }
-        /*
-        else {
-          res.render('dashboard', {items: doc});
-        }
-        */
-
       });
 });
 
@@ -65,12 +50,6 @@ router.post('/posts', function(req, res, next) {
     res.json(data);
     console.log('Post wurde mit '+ req.body.title +'hinzugefügt')
   }
-  /*
-  else {
-    res.redirect('/dashboard');
-  }
-  */
-
 });
 
 router.put('/posts', function(req, res, next) {
@@ -90,11 +69,6 @@ router.put('/posts', function(req, res, next) {
     res.json(doc);
     console.log('Daten wurden verändert!');
   }
-  /*
-  else {
-    res.redirect('/dashboard');
-  }
-  */
 });
 
 router.delete('/posts', function(req, res, next) {

@@ -31,14 +31,6 @@ router.get('/', function(req, res, next) {
     console.log('Willkommen bei Find Mates for Matches [ FM2 ]\n');
     res.end();
   }
-  /*
-  else
-  {
-  // HTML response
-  // render login.hbs
-  res.render('login');
-  }
-  */
 });
 
 // -------------- | ANMELDEN | POST  --------------
@@ -69,23 +61,6 @@ var data = new User(item);
       console.log('Willkommen bei FM2. Du wurdest erfolgreich eingeloggt!');
     })
   }
-  // HTML response
-  /*
-  else
-  {
-    User.findOne({username: username, password: password}, function(err, user)
-    {
-      // Wenn User nicht gefunden 404 Not Found
-      if(!user)
-      {
-        return res.status(404).send();
-      }
-        // UserSession + response
-        req.session.user = user;
-        res.status(200).send();
-        res.redirect('/dashboard');
-    })
-  }*/
 });
 
 // -------------- | USER ABMELDEN | GET /LOGOUT --------------
@@ -106,15 +81,6 @@ router.delete('/session', function userAbmelden(req, res){
     console.log('Bis zum nächsten mal. Du wurdest erfolgreich ausgeloggt!');
     }
   }
-  /*
-  // HTML response
-  // Session terminieren und redirect auf Loginpage
-  else
-  {
-    req.session.destroy();
-    return res.redirect('/');
-  }
-  */
 });
 
 
@@ -157,27 +123,9 @@ router.post('/users', function(req, res, next) {
       }
       // response Infotext
       res.status(200).res.json(newuser);
-      //res.send('Willkommen bei FM2. Der Benutzer mit dem Namen '+ newuser.username +'. wurde erfolgreich angelegt!');
       console.log('Willkommen bei FM2. Der Benutzer wurde erfolgreich angelegt!');
     })
   }
-  // HTML response
-  /*
-  else
-  {
-    // mongoose funktion save
-    newuser.save(function(err, savedUser){
-      if(err)
-      {
-        console.log(err);
-        return res.status(500).send();
-      }
-        res.redirect('/');
-    })
-
-  }
-  */
 });
 // exportiere router
 module.exports = router;
-//module.exports
