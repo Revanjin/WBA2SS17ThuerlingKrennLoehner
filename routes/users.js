@@ -1,7 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-mongoose.connect('localhost:27017/test');
+//mongoose.connect('localhost:27017/test');
+var mongoduri = 'ds161012.mlab.com:61012/fm2/dbname -u dbuser -p dbpassword'
+mongoose.connect(mongoduri);
+
 var Schema = mongoose.Schema;
 mongoose.Promise = require('bluebird');
 

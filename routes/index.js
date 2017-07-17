@@ -3,7 +3,8 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 // DB Connection aufbauen
-mongoose.connect('localhost:27017/test');
+var mongoduri = 'ds161012.mlab.com:61012/fm2/dbname -u dbuser -p dbpassword'
+mongoose.connect(mongoduri);
 var Schema = mongoose.Schema;
 
 // User Schema in collection myuser erstellen

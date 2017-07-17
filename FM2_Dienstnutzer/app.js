@@ -14,8 +14,8 @@ var users = require('./routes/dashboard');
 
 var app = express();
 
-var dHost = 'http://localhost';
-var dPort = 8000;
+var dHost = 'http://ds161012.mlab.com:61012/fm2';
+var dPort = 61012;
 var dUrl = dHost + ':' + dPort;
 
 // view engine setup
