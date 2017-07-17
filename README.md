@@ -1,4 +1,6 @@
 # Willkommen bei **FM² Find Mates for Matches**
+
+### [Hier geht's direkt zum Wiki](https://github.com/Revanjin/WBA2SS17ThuerlingKrennLoehner/wiki)
 ## Vorbereitung
 Damit alles einwandfrei funktioniert wird [node.js](https://nodejs.org/en/download/) & [MongoDB](https://www.mongodb.com/download-center) benötigt.
 
