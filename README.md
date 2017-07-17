@@ -33,11 +33,17 @@ Alternativ können via REST-Client folgende Ressourcen angesprochen werden
 <pre>/logout</pre>
 <pre>/dashboard</pre>
 <pre>/dashboard/get-data</pre>
+
 ### POST
 <pre>/login</pre>
 <pre>/logout</pre>
 <pre>/dashboard/insert</pre>
 <pre>/dashboard/update</pre>
 <pre>/dashboard/delete</pre>
+
+## Verwendung
+Das Projekt wurde auf Heroku deployed, aber es ist ein Problem mit dem Einbinden der MongoDB aufgetreten.
+Auch das erstellen einer DaaS auf mlab hat keine Abhilfe geschafft.
+Zu finden is das Projekt auf [Link zur Herokuapp](https://fm2.herokuapp.com) 
 
 Viel Spass beim finden neuer Onlinekollegen! 👍
