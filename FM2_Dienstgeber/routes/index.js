@@ -24,11 +24,12 @@ router.get('/', function(req, res, next) {
     res.write('**********************************************************\n');
     res.write('*****  Willkommen bei Find Mates for Matches [ FM2 ] *****\n');
     res.write('*****  Dir stehen folgenden Funktionen zur Verfügung *****\n');
-    res.write('*****  get | post                                    *****\n');
+    res.write('*****  get | post | delete                           *****\n');
     res.write('*****  auf folgende Ressourcen                       *****\n');
-    res.write('*****  / . /login . /register                        *****\n');
+    res.write('*****  / . /users . /posts                           *****\n');
     res.write('**********************************************************\n');
     console.log('Willkommen bei Find Mates for Matches [ FM2 ]\n');
+    res.status(200);
     res.end();
   }
 });
