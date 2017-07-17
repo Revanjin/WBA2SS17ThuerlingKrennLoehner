@@ -41,9 +41,9 @@ Alternativ können via REST-Client folgende Ressourcen angesprochen werden
 <pre>/dashboard/update</pre>
 <pre>/dashboard/delete</pre>
 
-## Verwendung
+## Deployment Info
 Das Projekt wurde auf Heroku deployed, aber es ist ein Problem mit dem Einbinden der MongoDB aufgetreten.
 Auch das erstellen einer DaaS auf mlab hat keine Abhilfe geschafft.
-Zu finden is das Projekt auf [Link zur Herokuapp](https://fm2.herokuapp.com) 
+Zu finden is das Projekt auf [Link zur Herokuapp](https://fm2.herokuapp.com)
 
 Viel Spass beim finden neuer Onlinekollegen! 👍
