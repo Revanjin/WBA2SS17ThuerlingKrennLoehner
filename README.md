@@ -1,37 +1,41 @@
-## Welcome to GitHub Pages
+# Willkommen bei **FM² Find Mates for Matches**
+## Vorbereitung
+Damit alles einwandfrei funktioniert wird [node.js](https://nodejs.org/en/download/) & [MongoDB](https://www.mongodb.com/download-center) benötigt.
 
-You can use the [editor on GitHub](https://github.com/Revanjin/WBA2SS17ThuerlingKrennLoehner/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Stelle sicher, dass beide Komponenten installiert sind
+mit den Befehlen:
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+`node -v `
 
-### Markdown
+`mongod --version`
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-```markdown
-Syntax highlighted code block
+***
+## Verwendung
+Klone das Repo
+`git clone https://github.com/Revanjin/WBA2SS17ThuerlingKrennLoehner.git`
+Navigiere in den Ordner Dienstgeber /-nutzer und führe `npm install` und anschließend `npm start` durch
 
-# Header 1
-## Header 2
-### Header 3
+`cd WBA2SS17ThuerlingKrennLoehner/FM_Dienstgeber npm install`
 
-- Bulleted
-- List
+`cd WBA2SS17ThuerlingKrennLoehner/FM_Dienstgeber npm start`
 
-1. Numbered
-2. List
+`cd WBA2SS17ThuerlingKrennLoehner/FM_Dienstnutzer npm install`
 
-**Bold** and _Italic_ and `Code` text
+`cd WBA2SS17ThuerlingKrennLoehner/FM_Dienstnutzer npm start`
 
-[Link](url) and ![Image](src)
-```
+Wenn beide Applikationen gestartet sind navigiere in deinem Browser auf [http://localhost:8001](http://localhost:8001) und starte durch!
+Alternativ können via REST-Client folgende Ressourcen angesprochen werden
+### GET
+<pre>/login</pre>
+<pre>/logout</pre>
+<pre>/dashboard</pre>
+<pre>/dashboard/get-data</pre>
+### POST
+<pre>/login</pre>
+<pre>/logout</pre>
+<pre>/dashboard/insert</pre>
+<pre>/dashboard/update</pre>
+<pre>/dashboard/delete</pre>
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Revanjin/WBA2SS17ThuerlingKrennLoehner/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Viel Spass beim finden neuer Onlinekollegen! 👍
