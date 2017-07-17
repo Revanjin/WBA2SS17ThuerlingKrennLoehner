@@ -1,1 +1,1 @@
-web: node FM2_Dienstgeber/index.js
+web: node /app.js
