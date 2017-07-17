@@ -84,7 +84,7 @@
 
                                   <!-- <li class="hidden-xs"><a href="#" class="add-project" data-toggle="modal" data-target="#add_project">Add Project</a></li> -->
                                   <h3>Dashboard</h3>
-                                  <a href="dashboard/get-data">Daten aktualisieren <i class="fa fa-retweet fa-2x" aria-hidden="true"></i></a>
+                                  <a href="/dashboard/get-data">Daten aktualisieren <i class="fa fa-retweet fa-2x" aria-hidden="true"></i></a>
                                   <div>
                                       {{# each items }}
                                           <article class="item">
@@ -165,7 +165,7 @@
                     <h4 class="modal-title">Post hinzufügen</h4>
                   </div>
                   <div class="modal-body">
-            <form action="./insert" method="post">
+            <form action="/dashboard/insert" method="post">
                 <div class="input">
                     <label for="title">Spiel</label>
                     <input type="text" id="title" name="title">
@@ -202,7 +202,7 @@
                 </div>
                 <div class="modal-body">
 
-                  <form action="dashboard/delete" method="post">
+                  <form action="/dashboard/delete" method="post">
                       <div class="input">
                           <label for="id">ID</label>
                           <input type="text" id="id" name="id">
@@ -231,7 +231,7 @@
               <div class="modal-body">
 
 
-                <form action="dashboard/update" method="post">
+                <form action="/dashboard/update" method="post">
                     <div class="input">
                         <label for="id">ID</label>
                         <input type="text" id="id" name="id">

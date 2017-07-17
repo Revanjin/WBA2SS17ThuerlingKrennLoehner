@@ -7,9 +7,9 @@ var Schema = mongoose.Schema;
 mongoose.Promise = require('bluebird');
 
 var userDataSchema = new mongoose.Schema({
-  title: {type: String, required: true},
-  content: String,
-  author: String
+  title: '',//{type: String, required: true},
+  content: '',//String,
+  author: '',//String
 }, {collection: 'user-data'});
 
 var UserData = mongoose.model('UserData', userDataSchema);

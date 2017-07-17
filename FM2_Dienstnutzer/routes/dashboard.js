@@ -58,15 +58,21 @@ router.get('/get-data', function(req, res, next)  {
 
 router.post('/insert', function(req, res, next)  {
   var url = dUrl + '/users/posts';
-
-
-
-  var item = {
-    title: req.body.title,
-    content: req.body.content,
-    author: req.body.author
-  };
-
+  var doc = {
+    "_id"     : req.body.id,
+    "title"   : req.body.title,
+    "content" : req.body.content,
+    "author"  : req.body.author
+ }
+ var options = {
+   uri : url,
+   method: 'POST',
+   headers: {
+     'Content-Type': 'application/json'
+   },
+   json: doc
+ }
+/*
   var options =
   {
     uri: url,
@@ -76,82 +82,64 @@ router.post('/insert', function(req, res, next)  {
       'Content-Type': 'application/json'
     }
   }
-  request(options, function (err, response){
-
-    var userPosts =
-     {
-       //"username" : req.body.username,
-       //"password" : req.body.password
-       "title"   : req.body.title,
-       "content" : req.body.content,
-       "author"  : req.body.author
-     }
-     var item = {
-       title: req.body.title,
-       content: req.body.content,
-       author: req.body.author
-     };
-     //item = JSON.parse(item);
+  var doc = {
+    "_id"     : req.body.id,
+    "title"   : req.body.title,
+    "content" : req.body.content,
+    "author"  : req.body.author
+  }
+  var title = req.body.title;
+  var content = req.body.content;
+  var author  = req.body.author;*/
+    //doc = JSON.parse(doc);
+    //console.log(data);
      if (req.header('Content-Type') == 'application/json')
        {
-         res.json(item);
-         console.log(req.body.title);
+
+       	request(options, function(err, response, data){
+       		res.json(data);
+       	});
        }
        else
        {
-         console.log(req.body.title);
-         console.log(req.body.content);
-         console.log(req.body.author);
-         res.json(item);
+         request(options, function(err, response, data){
+        		res.redirect('/dashboard');
+        	});
          //res.redirect('/dashboard');
        }
-  });
 
 });
 
-router.get('/update', function(req, res, next)  {
+router.post('/update', function(req, res, next)  {
   var url = dUrl + '/users/posts';
-
-
-
-  var item = {
-    title: req.body.title,
-    content: req.body.content,
-    author: req.body.author
-  };
-
-  var options =
-  {
-    uri: url,
-    method: 'PUT',
-    headers:
-    {
-      'Content-Type': 'application/json'
-    }
-  }
-  request(options, function (err, response, doc){
-    doc = JSON.parse(doc);
-    var userPosts =
-     {
-       //"username" : req.body.username,
-       //"password" : req.body.password
-       "_id"     : req.body.id,
-       "title"   : req.body.title,
-       "content" : req.body.content,
-       "author"  : req.body.author
-     }
+  var doc = {
+    "_id"     : req.body.id,
+    "title"   : req.body.title,
+    "content" : req.body.content,
+    "author"  : req.body.author
+ }
+ var options = {
+   uri : url,
+   method: 'PUT',
+   headers: {
+     'Content-Type': 'application/json'
+   },
+   json: doc
+ }
+  request(options, function (err, response, data){
      if (req.header('Content-Type') == 'application/json')
        {
-         res.json(doc);
-         console.log(req.body.title);
+         res.json(data);
+         console.log('Post wurde geändert');
        }
        else
-       {
-         res.redirect('/dashboard');
-       }
+        {
+          request(options, function (err, response, data)
+          {
+            res.redirect('/dashboard');
+          });
+        }
   });
 
 });
-
-
 module.exports = router;

@@ -398,18 +398,6 @@ li,ul{
     background: none;
     text-decoration: none;
 }
-
-.add-project::before {
-    background: rgba(0, 0, 0, 0) url("../images/plus.png") no-repeat scroll 0 0;
-    content: "";
-    ;
-    height: 12px;
-    left: 17px;
-    position: absolute;
-    top: 12px;
-    width: 12px;
-}
-
 .add-project:hover {
     color: #ffffff;
 }
